@@ -1,0 +1,34 @@
+1.测试向量法测试文件编写
+
+2.verilog语法中的一些不可综合的语句，如initial、#、$display、$readmemb、forever等。
+
+3.wire [0:7] b;         // 8-bit wire where b[0] is the most-significant bit.
+*这个是取地址相反方向，
+*例子： b[0:3]      // The *upper* 4 bits of b.
+*	assign w[3:0] = b[0:3];    // Assign upper 4 bits of b to lower 4 bits of w. 
+*	w[3]=b[0], w[2]=b[1], etc.
+*实际上我使用这个有问题，将[]反转后会给我Compile Error
+
+3.逻辑运算符与按位运算符的区分
+* 遇到向量时候，逻辑||与按位|需要区分
+* 这有个题目相关https://hdlbits.01xz.net/wiki/Vectorgates
+
+4.一个编译错误(参考:https://hdlbits.01xz.net/wiki/Module_pos)
+mod_a mod (.out1(out1),
+               .out2(out2),
+               .a(a),
+               .b(b),
+               .c(c),
+               .d(d));
+*我想应该是module mod_a ( output, output, input, input, input, input );的问题
+*这个表明我需要用position来执行
+
+5.always中能用wire吗
+*我在 https://hdlbits.01xz.net/wiki/Module_shift8
+*这个题目中使用了wire
+
+6.我的代码3Modules中有个code7_adder2文件，里面我用32个一位全加器实现32位全加器
+我认为我的代码没问题，但那里结果匹配现实有部分不匹配
+
+
+
