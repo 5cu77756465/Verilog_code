@@ -1,0 +1,63 @@
+module top_module (
+    input [31:0] a,
+    input [31:0] b,
+    output [31:0] sum
+);//
+    //wire [31:0] cout;
+    
+    wire cout1,cout2;
+    add16 mod_low (a[15:0], b[15:0], 1'b0, sum[15:0], cout1);
+    add16 mode_high (a[31:16], b[31:16], cout1, sum[31:16], cout2);
+    
+/*
+    //# Hint: Output 'sum' has 2132 mismatches. First mismatch occurred at time 4970.
+    //这里的不匹配我不是很能理解
+    
+    add1 mod1 (a[0],b[0],1'b0,sum[0],cout[0]);
+    add1 mod2 (a[1],b[1],cout[0],sum[1],cout[1]);
+    add1 mod3 (a[2],b[2],cout[1],sum[2],cout[2]);
+    add1 mod4 (a[3],b[3],cout[2],sum[3],cout[3]);
+    add1 mod5 (a[4],b[4],cout[3],sum[4],cout[4]);
+    add1 mod6 (a[5],b[5],cout[4],sum[5],cout[5]);
+    add1 mod7 (a[6],b[6],cout[5],sum[6],cout[6]);
+    add1 mod8 (a[7],b[7],cout[6],sum[7],cout[7]);
+    add1 mod9 (a[8],b[8],cout[7],sum[8],cout[8]);
+    add1 mod10 (a[9],b[9],cout[8],sum[9],cout[9]);
+    add1 mod11 (a[10],b[10],cout[9],sum[10],cout[10]);
+    add1 mod12 (a[11],b[11],cout[10],sum[11],cout[11]);
+    add1 mod13 (a[12],b[12],cout[11],sum[12],cout[12]);
+    add1 mod14 (a[13],b[13],cout[12],sum[13],cout[13]);
+    add1 mod15 (a[14],b[14],cout[13],sum[14],cout[14]);
+    add1 mod16 (a[15],b[15],cout[14],sum[15],cout[15]);
+    add1 mod17 (a[16],b[16],cout[15],sum[16],cout[16]);
+    add1 mod18 (a[17],b[17],cout[16],sum[17],cout[17]);
+    add1 mod19 (a[18],b[18],cout[17],sum[18],cout[18]);
+    add1 mod20 (a[19],b[19],cout[18],sum[19],cout[19]);
+    add1 mod21 (a[20],b[20],cout[19],sum[20],cout[20]);
+    add1 mod22 (a[21],b[21],cout[20],sum[21],cout[21]);
+    add1 mod23 (a[22],b[22],cout[21],sum[22],cout[22]);
+    add1 mod24 (a[23],b[23],cout[22],sum[23],cout[23]);
+    add1 mod25 (a[24],b[24],cout[23],sum[24],cout[24]);
+    add1 mod26 (a[25],b[25],cout[24],sum[25],cout[25]);
+    add1 mod27 (a[26],b[26],cout[25],sum[26],cout[26]);
+    add1 mod28 (a[27],b[27],cout[26],sum[27],cout[27]);
+    add1 mod29 (a[28],b[28],cout[27],sum[28],cout[28]);
+    add1 mod30 (a[29],b[29],cout[28],sum[29],cout[29]);
+    add1 mod31 (a[30],b[30],cout[29],sum[30],cout[30]);
+    add1 mod32 (a[31],b[31],cout[30],sum[31],cout[31]);*/
+    
+endmodule
+
+module add1 ( input a, input b, input cin,   output sum, output cout );
+
+// Full adder module here
+    wire [1:0] w;
+    assign w = a+b+cin;
+    assign sum = w[0];
+    assign cout = w[1];
+    /*另一种方法
+    assign sum = a ^ b ^ cin;
+	assign cout = a&b | a&cin | b&cin;*/
+    
+
+endmodule
