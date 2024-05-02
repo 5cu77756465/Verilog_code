@@ -1,0 +1,7 @@
+module top_module( output one );
+
+// Insert your code here
+    assign one = 1;
+	//此处使用1'b1更好
+
+endmodule
