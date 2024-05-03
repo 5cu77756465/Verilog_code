@@ -1,34 +1,43 @@
-1.²âÊÔÏòÁ¿·¨²âÊÔÎÄ¼ş±àĞ´
+1.æµ‹è¯•å‘é‡æ³•æµ‹è¯•æ–‡ä»¶ç¼–å†™
 
-2.verilogÓï·¨ÖĞµÄÒ»Ğ©²»¿É×ÛºÏµÄÓï¾ä£¬Èçinitial¡¢#¡¢$display¡¢$readmemb¡¢foreverµÈ¡£
+2.verilogè¯­æ³•ä¸­çš„ä¸€äº›ä¸å¯ç»¼åˆçš„è¯­å¥ï¼Œå¦‚initialã€#ã€$displayã€$readmembã€foreverç­‰ã€‚
 
 3.wire [0:7] b;         // 8-bit wire where b[0] is the most-significant bit.
-*Õâ¸öÊÇÈ¡µØÖ·Ïà·´·½Ïò£¬
-*Àı×Ó£º b[0:3]      // The *upper* 4 bits of b.
+*è¿™ä¸ªæ˜¯å–åœ°å€ç›¸åæ–¹å‘ï¼Œ
+*ä¾‹å­ï¼š b[0:3]      // The *upper* 4 bits of b.
 *	assign w[3:0] = b[0:3];    // Assign upper 4 bits of b to lower 4 bits of w. 
 *	w[3]=b[0], w[2]=b[1], etc.
-*Êµ¼ÊÉÏÎÒÊ¹ÓÃÕâ¸öÓĞÎÊÌâ£¬½«[]·´×ªºó»á¸øÎÒCompile Error
+*å®é™…ä¸Šæˆ‘ä½¿ç”¨è¿™ä¸ªæœ‰é—®é¢˜ï¼Œå°†[]åè½¬åä¼šç»™æˆ‘Compile Error
 
-3.Âß¼­ÔËËã·ûÓë°´Î»ÔËËã·ûµÄÇø·Ö
-* Óöµ½ÏòÁ¿Ê±ºò£¬Âß¼­||Óë°´Î»|ĞèÒªÇø·Ö
-* ÕâÓĞ¸öÌâÄ¿Ïà¹Øhttps://hdlbits.01xz.net/wiki/Vectorgates
+3.é€»è¾‘è¿ç®—ç¬¦ä¸æŒ‰ä½è¿ç®—ç¬¦çš„åŒºåˆ†
+* é‡åˆ°å‘é‡æ—¶å€™ï¼Œé€»è¾‘||ä¸æŒ‰ä½|éœ€è¦åŒºåˆ†
+* è¿™æœ‰ä¸ªé¢˜ç›®ç›¸å…³https://hdlbits.01xz.net/wiki/Vectorgates
 
-4.Ò»¸ö±àÒë´íÎó(²Î¿¼:https://hdlbits.01xz.net/wiki/Module_pos)
+4.ä¸€ä¸ªç¼–è¯‘é”™è¯¯(å‚è€ƒ:https://hdlbits.01xz.net/wiki/Module_pos)
 mod_a mod (.out1(out1),
                .out2(out2),
                .a(a),
                .b(b),
                .c(c),
                .d(d));
-*ÎÒÏëÓ¦¸ÃÊÇmodule mod_a ( output, output, input, input, input, input );µÄÎÊÌâ
-*Õâ¸ö±íÃ÷ÎÒĞèÒªÓÃpositionÀ´Ö´ĞĞ
+*æˆ‘æƒ³åº”è¯¥æ˜¯module mod_a ( output, output, input, input, input, input );çš„é—®é¢˜
+*è¿™ä¸ªè¡¨æ˜æˆ‘éœ€è¦ç”¨positionæ¥æ‰§è¡Œ
 
-5.alwaysÖĞÄÜÓÃwireÂğ
-*ÎÒÔÚ https://hdlbits.01xz.net/wiki/Module_shift8
-*Õâ¸öÌâÄ¿ÖĞÊ¹ÓÃÁËwire
+5.alwaysä¸­èƒ½ç”¨wireå—
+*æˆ‘åœ¨ https://hdlbits.01xz.net/wiki/Module_shift8
+*è¿™ä¸ªé¢˜ç›®ä¸­ä½¿ç”¨äº†wire
 
-6.ÎÒµÄ´úÂë3ModulesÖĞÓĞ¸öcode7_adder2ÎÄ¼ş£¬ÀïÃæÎÒÓÃ32¸öÒ»Î»È«¼ÓÆ÷ÊµÏÖ32Î»È«¼ÓÆ÷
-ÎÒÈÏÎªÎÒµÄ´úÂëÃ»ÎÊÌâ£¬µ«ÄÇÀï½á¹ûÆ¥ÅäÏÖÊµÓĞ²¿·Ö²»Æ¥Åä
+6.æˆ‘çš„ä»£ç 3Modulesä¸­æœ‰ä¸ªcode7_adder2æ–‡ä»¶ï¼Œé‡Œé¢æˆ‘ç”¨32ä¸ªä¸€ä½å…¨åŠ å™¨å®ç°32ä½å…¨åŠ å™¨
+æˆ‘è®¤ä¸ºæˆ‘çš„ä»£ç æ²¡é—®é¢˜ï¼Œä½†é‚£é‡Œç»“æœåŒ¹é…ç°å®æœ‰éƒ¨åˆ†ä¸åŒ¹é…
+
+7.caseä¸­ä¸èƒ½ç”¨3'b000è¿™ç§å˜›
+æˆ‘åœ¨https://hdlbits.01xz.net/wiki/Always_case
+å‡ºç°äº†æŠ¥é”™
+3b'000 : begin 
+                out = data0;
+                end
+
+
 
 
 
