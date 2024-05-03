@@ -12,6 +12,8 @@
 3.逻辑运算符与按位运算符的区分
 * 遇到向量时候，逻辑||与按位|需要区分
 * 这有个题目相关https://hdlbits.01xz.net/wiki/Vectorgates
+*assign out_or_logical = a[2]|a[1]|a[0] |b[2]|b[1]|b[0];
+*上面这个就是逻辑运算
 
 4.一个编译错误(参考:https://hdlbits.01xz.net/wiki/Module_pos)
 mod_a mod (.out1(out1),
