@@ -1,42 +1,42 @@
-ѧϰ�ʼ�
-(����ѧϰ��վ��https://hdlbits.01xz.net/wiki/Main_Page)
-wire ���������������ͣ�verilog�﷨�е�һ����Ҫ�������ͣ����ڱ�ʾ�������źţ���ʵ�ʵ�·�е��ź��������Ӧ��wire��verilog�е�Ĭ���������ͣ������е���������ź�û��ָ���������ͣ���Ĭ��Ϊwire�͡���wire�⣬����һ����Ҫ��������Ϊreg����ʾ�Ĵ����������ݡ�
+学习笔记
+(代码学习网站：https://hdlbits.01xz.net/wiki/Main_Page)
+wire ：线网型数据类型，verilog语法中的一种主要数据类型，用于表示线网型信号，与实际电路中的信号连线相对应。wire是verilog中的默认数据类型，此例中的输入输出信号没有指定数据类型，则默认为wire型。除wire外，另外一种主要数据类型为reg，表示寄存器类型数据。
 
-z ������̬��verilog�У��źŹ���4��״̬"0��1��x��z"���ֱ��ʾ�͵�ƽ���ߵ�ƽ����ȷ��̬�͸���̬������û�н��г�ʼ�����źţ�һ�㴦�ڲ�ȷ��̬��x��������̬��ʾ���ź�û�б������ź����������������ж������Դ�������������ϡ�
+z ：高阻态，verilog中，信号共有4种状态"0、1、x、z"，分别表示低电平、高电平、不确定态和高阻态。对于没有进行初始化的信号，一般处于不确定态（x），高阻态表示该信号没有被其他信号驱动，经常用于有多个驱动源的总线型数据上。
 
-4'bz :���ݸ�ʽ����ʾ���ź�Ϊ4bitλ��
+4'bz :数据格式，表示该信号为4bit位宽
 
-ʱ���߼� ����·���м��书�ܣ���·״̬�����뵱ǰ�����йأ�����ǰһʱ�̵�״̬�йء�
+时序逻辑 ：电路具有记忆功能，电路状态不但与当前输入有关，还与前一时刻的状态有关。
 
-ͬ���߼� ����ͬһ��ʱ���źż����¹��������ֻ��ʱ�ӵ������أ������½��أ������仯��
+同步逻辑 ：在同一的时钟信号激励下工作，输出只在时钟的上升沿（或者下降沿）发生变化。
 
-reg ����wire�����⣬����һ�ֳ��õ��������ͣ�һ���ʾ�Ĵ����������ݣ������������ԣ���סһ��ԭ����always���ڱ���ֵ���ź�Ӧ�����reg�ͣ���assign��丳ֵ���ź�Ӧ�����wire�͡�
+reg ：除wire类型外，另外一种常用的数据类型，一般表示寄存器类型数据，不过并不绝对，记住一条原则：在always块内被赋值的信号应定义成reg型，用assign语句赋值的信号应定义成wire型。
 
-always ����assign�⣬����һ��ʵ�ָ�ֵ�����Ĺؼ��֣����߶�����Ƕ�ף��������ڣ�assign���ֻ��ʵ������߼���ֵ����һ��assign������ֻ�ܸ�һ����ֵ����ʽ����always����ʵ������߼���ֵ������ʵ��ʱ���߼���ֵ�������ҿ��԰���������ֵ����ʽ��������ֵ����ʽ����Ӧλ��begin/end���м䡣
+always ：除assign外，另外一种实现赋值操作的关键字，两者都不可嵌套，区别在于，assign语句只能实现组合逻辑赋值，且一个assign语句后面只能跟一条赋值表达式。而always即能实现组合逻辑赋值，又能实现时序逻辑赋值操作，且可以包含多条赋值表达式，多条赋值表达式，则应位于begin/end对中间。
 
-posedge ��verilog�ؼ��֣���ʾ�����ص���˼��Always@(posedge clk)��ʾ��clk�źŵ������ص�ʱ�̣�ִ��always���ڲ�����䣬������Ӧ�ģ��Ǳ�ʾ�½��صĹؼ���negedge�����Ǵ���posedge��negedge��always�飬���ᱻ�ۺϳ�ʱ���߼���·��
+posedge ：verilog关键字，表示上升沿的意思。Always@(posedge clk)表示在clk信号的上升沿的时刻，执行always块内部的语句，与此相对应的，是表示下降沿的关键字negedge。凡是带有posedge或negedge的always块，都会被综合成时序逻辑电路。
 
-����/��������ֵ������"\<="���и�ֵ����䣬��Ϊ"��������ֵ"������"="���и�ֵ����䣬��Ϊ"������ֵ"����always���У�����ʽ��ֵ��ʽ���ִ�����Ⱥ�˳�򣬶���������ֵ�������ͬʱִ�С���ˣ���ʱ���߼���·�У����ָ�ֵ��ʽ���ܻ��ۺϳ���ͬ�ĵ�·�ṹ��
+阻塞/非阻塞赋值：采用"\<="进行赋值的语句，称为"非阻塞赋值"，采用"="进行赋值的语句，称为"阻塞赋值"。在always块中，阻塞式赋值方式语句执行有先后顺序，而非阻塞赋值语句则是同时执行。因此，在时序逻辑电路中，两种赋值方式可能或综合出不同的电路结构。
 
-����ֻ���ס���¹���
+我们只需记住以下规则：
 
-i��������߼���·�У�ʹ������ʽ��ֵ��ʽ"="��
+i：在组合逻辑电路中，使用阻塞式赋值方式"="；
 
-ii: ��ʱ���߼���·�У�ʹ�÷�����ʽ��ֵ��ʽ"\<="
+ii: 在时序逻辑电路中，使用非阻塞式赋值方式"\<="
 
-iii����ͬһ��always���ڣ�ֻ�ܴ���һ�ָ�ֵ��ʽ��
+iii：在同一个always块内，只能存在一种赋值方式。
 
-iv��һ���źţ�ֻ����һ��always��һ��assign����¸�ֵ��
+iv：一个信号，只能在一个always或一个assign语句下赋值。
 
-v��ԭ������˵��һ��always����ֻ����һ����һ���źţ���ͬ���źſ��ڲ�ͬ��always���ڴ�����
+v：原则上来说，一个always块内只处理一个或一类信号，不同的信号可在不同的always块内处理。
 
-vi: always����ֻ�ܶ�reg���źŽ��д��������ܶ�wire�����ݸ�ֵ��Ҳ����ʵ����ģ��
+vi: always块内只能对reg型信号进行处理，不能对wire型数据赋值，也不能实例化模块
 
-ͬ����λ ����λֻ�ܷ�������clk�źŵ������أ���clk�źų������⣬���޷����и�λ��
+同步复位 ：复位只能发生在在clk信号的上升沿，若clk信号出现问题，则无法进行复位。
 
-If/else :always���г��õ������ж���䣬����Ƕ�ף������ȼ���һ����˵��Ӧ����λ�����߼����ڵ�һ��if����£�ʹ�������ߵ����ȼ��������ֻ����always����ʹ�á�����һ�ֱȽϳ��õ������ж������case����if/else��䲻ͬ��case��䲻�����ȼ�
+If/else :always块中常用的条件判断语句，可以嵌套，有优先级，一般来说，应将复位处理逻辑放在第一个if语句下，使其具有最高的优先级，该语句只能在always块内使用。另外一种比较常用的条件判断语句是case。与if/else语句不同，case语句不带优先级
 
-�첽��λ ����always�����б����б��У�������posedge clk��clk�ź������أ� ��posedge reset��reset�ź��½��أ�����������ֻҪ��һ���������������ִ��always���ڵ��߼�����λ�����߼�Ӧ������ߵ����ȼ���
+异步复位 ：在always的敏感变量列表中，包含了posedge clk（clk信号上升沿） 和posedge reset（reset信号下降沿）两个条件，只要有一个条件发生，便会执行always块内的逻辑。复位处理逻辑应具有最高的优先级。
 
 wire [2:0] a, c;   // Two vectors
 assign a = 3'b101;  // a = 101
@@ -63,20 +63,57 @@ assign out = {in[7:0], in[15:8]};       // This is different. The 16-bit vector 
 {3'd5, {2{3'd6}}}   // 9'b101_110_110. It's a concatenation of 101 with
                     // the second vector, which is two copies of 3'b110.
 
-�����ҵ�һ�δ���
+这是我的一段代码
 assign out[31:0] = {{24{in[7]}},in[7:0]};
-�����assign out[31:0] = {24{in[7]},in[7:0]};���Ǵ���ģ����ԶԱ�һ�¡�
+如果是assign out[31:0] = {24{in[7]},in[7:0]};则是错误的，可以对比一下。
 
-���ַ���
+两种方法
 mod_a instance1 ( wa, wb, wc );
 mod_a instance2 ( .out(wc), .in1(wa), .in2(wb) );
 
-ȫ�����ı�λ�ͽ�λ���㷽��
+全加器的本位和进位计算方法
 Full adder equations:
 sum = a ^ b ^ cin
 cout = a&b | a&cin | b&cin
 
-һλ��nλ����operateʱ����Ҫÿλ������
-���ӣ�assign w = b^{32{sub}};
-����32λb��һλsub���
+一位和n位进行operate时，需要每位都进行
+例子：assign w = b^{32{sub}};
+这是32位b和一位sub异或
 
+一个case和if结合的模板
+always @(*) begin     // This is a combinational circuit
+    case (in)
+      1'b1: begin 
+               out = 1'b1;  // begin-
+end if >1 statement
+            end
+      1'b0: out = 1'b0;
+      default: out = 1'bx;
+    endcase
+end
+
+https://hdlbits.01xz.net/wiki/Always_case2
+这个题目的一个特殊写法
+module top_module (
+    input [3:0] in,
+    output reg [1:0] pos  );
+    always@ (*)
+    if((in << 3) == 4'b1000) pos <= 2'd0;
+    else if((in << 2) == 4'b1100 || (in << 2) == 4'b1000) pos <= 2'd1;
+    else if((in >> 2) == 4'b0011 || (in >> 2) == 4'b0001) pos <= 2'd2;
+    else if((in >> 3) == 4'b0001) pos <= 2'd3;
+    else pos <= 2'd0;
+endmodule
+
+在casez() 1'bz这个样例中，z值得去了解一下,可以代替任何一位。
+always @(*) begin
+    casez (in[3:0])
+        4'bzzz1: out = 0;   // in[3:1] can be anything
+        4'bzz1z: out = 1;
+        4'bz1zz: out = 2;
+        4'b1zzz: out = 3;
+        default: out = 0;
+    endcase
+end
+
+我发现case和c语言中的不一样，这里貌似没有case是否加break的说明。
