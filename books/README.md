@@ -1,1 +1,1 @@
-verilog-ieee-1是一本语法规范
+verilog-ieee是一本语法规范
